@@ -1282,7 +1282,7 @@ describe('transmission', () => {
             const team = new Teamwork.Team();
             const handler = (request) => {
 
-                const stream = new Stream.Readable();
+                const stream = new Stream.Readable({ autoDestroy: false });
 
                 stream.destroy = undefined;    // Node 8 streams comes with a destroy method – disable for this test
 
@@ -1442,7 +1442,7 @@ describe('transmission', () => {
 
                 clientRequest.abort();
 
-                const stream = new Stream.Readable();
+                const stream = new Stream.Readable({ autoDestroy: false });
                 let responded = false;
 
                 stream.destroy = undefined;    // Node 8 streams comes with a destroy method – disable for this test
